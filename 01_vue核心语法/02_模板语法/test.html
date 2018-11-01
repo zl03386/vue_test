@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <h2>大括号表达式：</h2>
+    <h3>{{msg}}</h3>
+    <h3>{{msg.toUpperCase()}}</h3>
+
+    <h2>强制绑定</h2>
+    <p>用来指定变化的属性值</p>
+    <a href="url">v-bind用来指定变化的属性值</a>
+    <span>url在data中，此时href="url"不能跳转链接</span>
+    <br>
+    <a v-bind:href="url">v-bind用来指定变化的属性值</a>
+    <span>v-bind:href="url",可以通过v-bind强制绑定来实现</span>
+    <br>
+    <a :href="url">v-bind用来指定变化的属性值</a>
+    <span>:href="url"强制绑定的简写</span>
+
+    <h2>绑定事件监听</h2>
+    <button v-on:click="fun">v-on:v-on:click="fun"</button>
+    <button @click="fun">@click="fun"</button>
+  </div>
+
+  <script type="text/javascript" src="../../static/js/vue.js"></script>
+  <script type="text/javascript">
+    new Vue({
+      el: '#app',
+      data: {
+        msg: 'I love Vue!',
+        url: 'https://cn.vuejs.org/index.html'
+      },
+      methods: {
+        fun (event) {
+          alert(event.target.innerHTML)
+        }
+      }
+    })
+  </script>
+</body>
+</html>
+<!--
+1. 模板的理解:
+  动态的html页面
+  包含了一些JS语法代码
+    大括号表达式
+    指令(以v-开头的自定义标签属性)
+2. 双大括号表达式
+  语法: {{exp}} 或 {{{exp}}}
+  功能: 向页面输出数据
+  可以调用对象的方法
+3. 指令一: 强制数据绑定
+  功能: 指定变化的属性值
+  完整写法:
+    v-bind:xxx='yyy'  //yyy会作为表达式解析执行
+  简洁写法:
+    :xxx='yyy'
+4. 指令二: 绑定事件监听
+  功能: 绑定指定事件名的回调函数
+  完整写法:
+    v-on:click='xxx'
+  简洁写法:
+    @click='xxx'
+-->

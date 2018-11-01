@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <h2>绑定监听</h2>
+    <button v-on:click="click1">v-on:click="click1"</button>
+    <button @click="click2"> @click="click2"</button>
+    <button @click="click3('abcd',$event)">@click="click3('abcd',$event)"</button>
+
+    <h2>事件修饰符</h2>
+    <div style="width: 200px;height: 200px;background: pink"  @click="click4">
+      <div style="width: 100px;height: 100px;background: blue"  @click.stop="click5"></div>
+    </div>
+    <a href="https://cn.vuejs.org/v2/guide/installation.html" @click.prevent>
+      https://cn.vuejs.org/v2/guide/installation.html(阻止事件默认行为@click.prevent)
+    </a>
+
+    <h2>按键修饰符</h2>
+    <input type="text" placeholder="请输入内容,然后按Enter键" v-model="importContent"
+      @keyup.enter="click6">
+    <input type="text" @keydown="keydownCode" placeholder="得到某个具体按键的keyCode值">
+  </div>
+
+<script type="text/javascript" src="../../static/js/vue.js"></script>
+<script type="text/javascript">
+  new Vue({
+    el : '#app',
+    data: {
+      importContent: ''
+    },
+    methods : {
+      click1 (event) {
+        alert(event.target.innerHTML)
+      },
+      click2 (event) {
+        alert(event.target.innerHTML)
+      },
+      click3 (str, event) {
+        alert(str + '--' + event.target.innerHTML)
+      },
+      click4 () {
+        alert('outer')
+      },
+      click5 () {
+        alert('inner')
+      },
+      click6 (event) {
+        // alert(event.target.value) // 显示输入的内容
+        alert(this.importContent)
+      },
+      keydownCode (event) {
+        alert(event.keyCode)
+      }
+    },
+  })
+</script>
+</body>
+</html>
+<!--
+1. 绑定监听:
+  v-on:xxx="fun"
+  @xxx="fun"
+  @xxx="fun(参数)"
+  默认事件形参: event
+  隐含属性对象: $event
+  // 事件绑定如果已传参数，如果需要event,需要传入$event,如：@click='click('abc',$event)'
+2. 事件修饰符:
+  .prevent : 阻止事件的默认行为 event.preventDefault()
+  .stop : 停止事件冒泡 event.stopPropagation()
+3. 按键修饰符
+  .keycode : 操作的是某个keycode值的健
+  .enter : 操作的是enter键
+-->

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <p v-if="ok">表白成功</p>
+    <p v-else>表白失败</p>
+    <hr>
+    <p v-show="ok">求婚成功</p>
+    <p v-show="!ok">求婚失败</p>
+    <button @click="ok = !ok">切换</button>
+  </div>
+
+  <script type="text/javascript" src="../../static/js/vue.js"></script>
+  <script type="text/javascript">
+    new new Vue({
+      el : '#app',
+      data : {
+        ok: true
+      },
+    })
+  </script>
+</body>
+</html>
+<!--
+1. 条件渲染指令
+  v-if
+  v-else
+  v-show
+2. 比较v-if与v-show
+  如果需要频繁切换 v-show 较好
+-->

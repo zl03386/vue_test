@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="demo">
+    <h2>v-for遍历数组</h2>
+    <div v-for="(person, index) in persons" :key="index">
+      {{index}}--{{person.name}}--{{person.age}}--
+      <button @click="deleteP(index)">删除</button>--
+      <button @click="replaceP(index,{name:'Bob',age:10})">更新</button>
+    </div>
+    <h2>v-for遍历对象</h2>
+    <div v-for="(item, index) in persons[0]" :key="index">
+      {{index}}:{{item}}
+    </div>
+  </div>
+
+<script type="text/javascript" src="../../static/js/vue.js"></script>
+  <script type="text/javascript">
+    new Vue({
+      el : '#demo',
+      data : {
+        persons: [
+          {
+            name: 'Tom',
+            age: 18
+          },
+          {
+            name: 'Tom2',
+            age: 17
+          },
+          {
+            name: 'Tom3',
+            age: 16
+          },
+          {
+            name: 'Tom4',
+            age: 15
+          },
+          {
+            name: 'Tom5',
+            age: 14
+          }
+        ]
+      },
+      methods: {
+        deleteP (index) {
+          console.log(index)
+          this.persons.splice(index, 1)
+        },
+        replaceP (index,val) {
+          this.persons.splice(index,1,val)
+        }
+      }
+    })
+    console.log(this.persons)
+  </script>
+</body>
+</html>
+
+<!--
+1. 列表显示
+  数组: v-for / index
+  对象: v-for / key
+2. 列表的更新显示
+  删除item
+  替换item
+-->
+

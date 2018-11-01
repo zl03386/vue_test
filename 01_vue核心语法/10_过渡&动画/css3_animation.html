@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    html,body{
+      height: 100%;
+      overflow: hidden;
+    }
+    #wrap{
+      height: 100%;
+      perspective: 300px;
+    }
+    .box1{
+      margin: 200px;
+      width: 200px;
+      height: 200px;
+      background: pink;
+      border-radius: 100px;
+      line-height: 200px;
+      text-align: center;
+      animation: routeY 3s infinite linear;
+    }
+    @keyframes routeY{
+      from{
+        transform: rotateY(0deg);
+      }
+      to{
+        transform: rotateY(360deg);
+      }
+    }
+
+
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <div class="box1">box1</div>
+  </div>
+</body>
+</html>
+<!--
+css3: animation：
+
+animation：
+  animation-name // 动画名称
+  animation-duration // 动画时长
+  animation-timing-function // 每一动画周期中执行的节奏
+  animation-delay // 动画延迟
+  animation-iteration-count // 动画执行的次数
+  animation-direction // 动画执行的方向
+  animation-fill-mode // 动画在动画外的状态
+  animation-play-state // 动画执行的运行和暂停
+
+在每个动画定义中，顺序很重要：
+可以被解析为 <time>的第一个值被分配给animation-duration,
+第二个分配给 animation-delay。
+
+关键帧（@keyframes）
+  语法：
+    @keyframes animiationName{
+      keyframes-selector{
+        css-style;
+      }
+    }
+  animiationName:必写项，定义动画的名称
+  keyframes-selector：必写项，动画持续时间的百分比
+    from：0%
+    to：100%
+    css-style：css声明
+  -->
